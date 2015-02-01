@@ -1,0 +1,19 @@
+.newsTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+}
+
+.newsInfo{
+    margin-top: 10px;
+    text-align: center;
+    font-size:10px;
+    font-weight: bold;
+}
+
+hr.hrNews{ 
+height:1px;
+border:none;
+border-top:1px solid black;
+}

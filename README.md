@@ -89,4 +89,6 @@ banner   =>   首页|最新公告|竞赛列表|*在线报名|*作品提交|获�
 
 ###目录结构
 
-同样在整理中
+关于Laravel框架的目录结构，下面这篇Blog有比较详细的介绍。我们项目中用到的外部文件（css，js，img等）都放在/public/类型名下的目录里。
+
+http://ijiaober.github.io/2014/08/09/laravel/Architecture-of-Laravel/

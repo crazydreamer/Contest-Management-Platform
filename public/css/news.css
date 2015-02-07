@@ -12,6 +12,10 @@
     font-weight: bold;
 }
 
+.newsContent{
+    min-height: 600px;
+}
+
 hr.hrNews{ 
 height:1px;
 border:none;

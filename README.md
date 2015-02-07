@@ -1,4 +1,5 @@
 ### 前言
+test
 
 开发使用的框架是Laravel最新4.2版本，关于Laravel这个框架，了解和学习可以到http://v4.golaravel.com/docs/4.2 查看。
 不过首先需要对MVC框架有基本的概念和理解。

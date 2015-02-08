@@ -66,7 +66,7 @@
                             </p>
                         </div>
                         <div class="moduleContent">
-                            {{ Form::open(array('url' => 'foo/bar', 'name' => 'test', 'role' => 'form', 'class' => 'form-horizontal')) ;}}
+                            {{ Form::open(array('url' => 'foo/bar', 'name' => 'test', 'role' => 'form', 'class' => 'form-horizontal')) }}
                             <div class="form-group">
                                 {{Form::label('username', '帐号', $attributes = array('class' => 'col-xs-3 control-label'));}}
                                 <div class="col-xs-8">
@@ -90,7 +90,7 @@
                                  'id' => 'submit',
                                  'class' => 'form-control' ));}}
                             </div>
-                            {{ Form::close(); }}
+                            {{ Form::close() }}
                         </div>
                     </div>
                 </div>

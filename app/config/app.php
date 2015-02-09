@@ -121,6 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+                                    // Laravel-Debugbar see https://github.com/barryvdh/laravel-debugbar/tree/1.8
+                                    'Barryvdh\Debugbar\ServiceProvider',
 
 	),
 

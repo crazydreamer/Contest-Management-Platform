@@ -1,7 +1,7 @@
 @extends('admin.news.master')
 
 @section('javascript')
-<script src="//cdn.ckeditor.com/4.4.6/full/ckeditor.js"></script>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
 @stop
 
 @section('functionArea')

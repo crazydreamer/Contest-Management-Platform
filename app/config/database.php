@@ -52,13 +52,24 @@ return array(
 			'prefix'   => '',
 		),
 
-		'mysql' => array(
+		'mysql_remote' => array(
 			'driver'    => 'mysql',
 			'host'      => '106.185.40.8',
 			'database'  => 'platform_dev',
 			'username'  => 'platform_dev',
 			'password'  => 'DEV123',
 			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+            
+            		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => '127.0.0.1',
+			'database'  => 'platform_dev',
+			'username'  => 'root',
+			'password'  => 'DEV123',
+			'charset'   => 'utf8',  
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),

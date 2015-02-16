@@ -11,9 +11,7 @@
   |
  */
 
-Route::get('/', function() {
-    return View::make('index.master');
-});
+Route::get('/', 'IndexController@index');
 
 Route::get('/news/{id}', 'IndexController@news')->where('id', '[0-9]+');;
 

@@ -14,7 +14,16 @@
 
 .moduleContent{
     text-align: left;
-    margin-top: 10%;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+a#newsCategory{
+    color:black;
+    font-weight: bold;
+}
+
+a#newsTitle{
+    color:black;
 }
 
 .headerTitle{

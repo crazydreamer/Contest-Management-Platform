@@ -6,5 +6,8 @@ class News   extends Eloquent {
     protected $fillable = array('cat_id', 'user_id', 'title', 'content', 'update_time');
     public $timestamps = false;
     
+    public function category() {
+        return $this->hasOne('NewsCategory', 'cat_id');
+    }
 }
 

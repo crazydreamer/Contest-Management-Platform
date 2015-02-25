@@ -4,7 +4,7 @@
 <div class="col-md-8 col-md-offset-1">
     <div class="functionArea">
         <div id="categoryList">
-            <table class="table table-hover">
+            <table class="table table-hover text-center">
                 <thead>
                 <th>编号</th>
                 <th>分类名称</th>
@@ -12,7 +12,7 @@
                 <th>操作</th>
                 </thead>
                 @foreach ($lists as $list)
-                <tr>
+                <tr class="{{$list->is_active ? '' : 'warning'}}">
                     <th>{{ $list->cat_id }}</th>
                     <td>{{ '<a href="#">' . $list->name . '</a>' }}</td>
                     <td>{{ $list->is_active ? '已启用' : '未启用' }}</td>

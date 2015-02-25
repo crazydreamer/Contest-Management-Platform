@@ -1,9 +1,12 @@
 <?php
 
-class NewsController extends \BaseController {
+class NewsController extends BaseController {
 
     public function getIndex() {
-        $lists = News::get();
+        $lists = News::where('status', '!=', 2)->get();
+        foreach ($lists as $news) {
+            $news->short_title = UtilsController::shortTitle($news->title, 55);
+        }
         return View::make('admin.news.list')->with(
                         array(
                             'lists' => $lists,
@@ -11,7 +14,7 @@ class NewsController extends \BaseController {
     }
 
     public function getNew() {
-        $lists = NewsCategory::get();
+        $lists = NewsCategory::where('is_active', '=', 1)->get();
         return View::make('admin.news.new')->with(
                         array(
                             'lists' => $lists,
@@ -28,6 +31,13 @@ class NewsController extends \BaseController {
         );
         $news->create($data);
         return $this->getIndex();
+    }
+
+    public function deleteIndex() {
+        $id = Input::get('newsId');
+        $news = News::find($id);
+        $news->status = 2;
+        $news->save();
     }
 
     public function getCategory() {

@@ -54,7 +54,9 @@
                             </p>
                         </div>
                         <div class="moduleContent">
-                            <a href='news/123'>测试连接</a>
+                            @foreach ($newsList as $news)
+                            <p><a id='newsCategory' href="#{{$news->cat_id}}">{{$news->name}}</a>&nbsp;|&nbsp;<a id="newsTitle" href="/news/{{$news->news_id}}">{{$news->short_title}}</a></p>
+                            @endforeach
                         </div>
                     </div>
                 </div>

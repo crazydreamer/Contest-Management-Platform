@@ -2,16 +2,35 @@
 
 @section('javascript')
 <script>
-    function deleteNews(id) {
-        $.ajax({
-            url: '/manage/news',
-            type: 'DELETE',
-            data: 'newsId=' + id,
-            success: function () {
-                alert('文章刪除成功！');
-                location.reload(); 
-            }
-        });
+    function sendAction(action, id) {
+        switch (action)
+        {
+            case "delete":
+                if (confirm('是否要刪除文章？'))
+                    $.ajax({
+                        url: '/manage/news',
+                        type: 'DELETE',
+                        data: 'newsId=' + id,
+                        success: function () {
+                            alert('文章刪除成功！');
+                            window.location.href = window.location.href;
+                        }
+                    });
+                break;
+            case "active":
+                if (confirm('是否要发布文章？'))
+                    $.ajax({
+                        url: '/manage/news',
+                        type: 'POST',
+                        data: 'newsId=' + id,
+                        success: function () {
+                            alert('文章已发布！');
+                            window.location.href = window.location.href;
+                        }
+                    });
+                break;
+            default:
+        }
     }
 </script>
 @append
@@ -32,7 +51,7 @@
                     <th>{{ $list->news_id }}</th>
                     <td>{{ '<a href="/news/' . $list->news_id . '">' . $list->short_title . '</a>' }}</td>
                     <td>{{ $list->status ? '已发布' : '未发布' }}</td>
-                    <td>{{ $list->status ? '&nbsp&nbsp' :'<a href="#">发布</a>' }}&nbsp; {{'<a href="#">修改</a>' . '&nbsp<a href="#" onclick="deleteNews(' . $list->news_id . ')">删除</a>' }}</td>
+                    <td>{{ $list->status ? '' :'<a onclick="sendAction(\'active\', ' . $list->news_id . ')">发布</a>' }} {{'<a href="/manage/news/edit?id=' . $list->news_id  . '">修改</a>' . ' ' . '<a onclick="sendAction(\'delete\', ' . $list->news_id . ')">删除</a>' }}</td>
                 </tr>
                 @endforeach
             </table>

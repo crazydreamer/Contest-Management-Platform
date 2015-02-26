@@ -14,10 +14,10 @@ class NewsController extends BaseController {
     }
 
     public function getNew() {
-        $lists = NewsCategory::where('is_active', '=', 1)->get();
+        $cats = NewsCategory::where('status', '=', 1)->get();
         return View::make('admin.news.new')->with(
                         array(
-                            'lists' => $lists,
+                            'cats' => $cats,
         ));
     }
 
@@ -26,11 +26,15 @@ class NewsController extends BaseController {
         $data = array(
             'title' => Input::get('newsTitle'),
             'user_id' => 1, //FIX ME ; add real author when user model finished.
-            'cat_id' => 1, //FIX ME : the same with above
+            'cat_id' => (int) Input::get('categoryId'),
             'content' => Input::get('newsContent'),
         );
-        $news->create($data);
-        return $this->getIndex();
+        if ($data['cat_id'] > 0) {
+            $news->create($data);
+            header("Location:/manage/news");
+        } else {
+            return "请选择新闻对应分类！";
+        }
     }
 
     public function deleteIndex() {
@@ -40,11 +44,43 @@ class NewsController extends BaseController {
         $news->save();
     }
 
+    public function postIndex() {
+        $id = Input::get('newsId');
+        $news = News::find($id);
+        $news->status = 1;
+        $news->save();
+    }
+
+    public function getEdit() {
+        $id = Input::get('id');
+        $cats = NewsCategory::where('status', '!=', 2)->get();
+        $data = DB::table('news')->where('news_id', '=', $id)
+                ->leftjoin('news_category', 'news.cat_id', '=', 'news_category.cat_id')
+                ->select('news.*', 'news_category.cat_id', 'news_category.name')
+                ->first();
+        return View::make('admin.news.edit')->with(
+                        array(
+                            'cats' => $cats,
+                            'data' => $data,
+        ));
+    }
+
+    public function postEdit() {
+        $news = News::find(Input::get('newsId'));
+        $news->title = Input::get('newsTitle');
+        $news->user_id = 1; //FIX ME ; add real author when user model finished.
+        $news->cat_id = (int) Input::get('categoryId');
+        $news->content = Input::get('newsContent');
+        $news->update_time = time();
+        $news->save();
+        return $this->getIndex();
+    }
+
     public function getCategory() {
-        $lists = NewsCategory::get();
+        $cats = NewsCategory::where('status', '!=', 2)->get();
         return View::make('admin.news.category')->with(
                         array(
-                            'lists' => $lists,
+                            'cats' => $cats,
         ));
     }
 
@@ -54,6 +90,13 @@ class NewsController extends BaseController {
         $newsCategory->create(array('name' => $name));
         // FIX ME  未做错误处理
         return $this->getCategory();
+    }
+
+    public function deleteCategory() {
+        $id = Input::get('catId');
+        $cat = NewsCategory::find($id);
+        $cat->status = 2;
+        $cat->save();
     }
 
 }

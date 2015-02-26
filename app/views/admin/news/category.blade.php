@@ -1,5 +1,28 @@
 @extends('admin.news.master')
 
+@section('javascript')
+<script>
+    function sendAction(action, id) {
+        switch (action)
+        {
+            case "delete":
+                if (confirm('是否要刪除文章文类？'))
+                    $.ajax({
+                        url: '/manage/news/category',
+                        type: 'DELETE',
+                        data: 'catId=' + id,
+                        success: function () {
+                            alert('分类删除成功！');
+                            window.location.href = window.location.href;
+                        }
+                    });
+                break;
+            default:
+        }
+    }
+</script>
+@append
+
 @section('functionArea')
 <div class="col-md-8 col-md-offset-1">
     <div class="functionArea">
@@ -11,12 +34,12 @@
                 <th>状态</th>
                 <th>操作</th>
                 </thead>
-                @foreach ($lists as $list)
-                <tr class="{{$list->is_active ? '' : 'warning'}}">
-                    <th>{{ $list->cat_id }}</th>
-                    <td>{{ '<a href="#">' . $list->name . '</a>' }}</td>
-                    <td>{{ $list->is_active ? '已启用' : '未启用' }}</td>
-                    <td>{{ $list->is_active ? '<a href="#">停用</a>' : '<a href="#">启用</a>' }}&nbsp; {{ '<a href="#">删除</a>' }}</td>
+                @foreach ($cats as $cat)
+                <tr class="{{$cat->status ? '' : 'warning'}}">
+                    <th>{{ $cat->cat_id }}</th>
+                    <td>{{ '<a href="#">' . $cat->name . '</a>' }}</td>
+                    <td>{{ $cat->status ? '已启用' : '未启用' }}</td>
+                    <td>{{ '<a onclick="sendAction(\'delete\', ' . $cat->cat_id . ')">删除</a>' }}</td>
                 </tr>
                 @endforeach
             </table>

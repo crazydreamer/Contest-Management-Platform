@@ -14,7 +14,7 @@
         
         <div class="newsInfo">
             <p>
-                分类：{{{ $category or '默认' }}}
+                分类：{{{ $name or '默认' }}}
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 点击：{{{ $clicks or '0' }}}
                 &nbsp;&nbsp;&nbsp;&nbsp;

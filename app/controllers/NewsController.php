@@ -3,7 +3,7 @@
 class NewsController extends BaseController {
 
     public function getIndex() {
-        $lists = News::where('status', '!=', 2)->get();
+        $lists = News::where('status', '!=', 2)->orderBy('news_id', 'desc')->paginate(10);
         foreach ($lists as $news) {
             $news->short_title = UtilsController::shortTitle($news->title, 55);
         }
@@ -77,7 +77,7 @@ class NewsController extends BaseController {
     }
 
     public function getCategory() {
-        $cats = NewsCategory::where('status', '!=', 2)->get();
+        $cats = NewsCategory::where('status', '!=', 2)->paginate(10);
         return View::make('admin.news.category')->with(
                         array(
                             'cats' => $cats,

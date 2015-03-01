@@ -4,8 +4,8 @@
 @parent
 <link rel="stylesheet" href="/css/news.css">
 @stop
-@section('main')
 
+@section('main')
 <div class="row-fluid">
     <div class="col-md-12">
         <div class="newsTitle">
@@ -31,4 +31,4 @@
         </div>
     </div>
 </div>
-@stop
+@overwrite

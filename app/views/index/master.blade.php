@@ -4,35 +4,6 @@
 <link rel="stylesheet" href="/css/index.css">
 @stop
 
-@section('banner')
-            <div class="row-fluid banner">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-default" role="navigation">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a href="/">首页</a></li>
-                                <li><a href="#">最新公告</a></li>
-                                <li><a href="#">竞赛列表</a></li>
-                                <li><a href="#">在线报名</a></li>
-                                <li><a href="#">作品提交</a></li>
-                                <li><a href="#">获奖作品</a></li>
-                                <li><a href="#">优秀作品</a></li>
-                                <li><a href="#">综合查询</a></li>
-                            </ul>
-                            <div class="nav navbar-nav navbar-right">
-                                <form class="navbar-form navbar-left" role="search">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="全站搜索">
-                                    </div>
-                                    <button type="submit" class="btn btn-default">搜索</button>
-                                </form>
-                            </div>
-                        </div>
-                </div>
-                </nav>
-            </div>
-@stop
-
 @section('main')
      <div class="row-fluid text-center">
                 <div class="col-md-4">
@@ -55,7 +26,7 @@
                         </div>
                         <div class="moduleContent">
                             @foreach ($newsList as $news)
-                            <p><a id='newsCategory' href="#{{$news->cat_id}}">{{$news->name}}</a>&nbsp;|&nbsp;<a id="newsTitle" href="/news/{{$news->news_id}}">{{$news->short_title}}</a></p>
+                            <p><a id='newsCategory' href="#{{$news->cat_id}}">{{$news->name}}</a>&nbsp;|&nbsp;<a id="newsTitle" href="/news/{{$news->news_id}}" title='{{ $news->title }}'>{{$news->short_title}}</a></p>
                             @endforeach
                         </div>
                     </div>

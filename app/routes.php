@@ -11,10 +11,13 @@
   |
  */
 
+// 首页
 Route::get('/', 'IndexController@index');
-
-Route::get('/news/{id}', 'IndexController@news')->where('id', '[0-9]+');;
-
+// 新闻正文
+Route::get('/news/{id}', 'IndexController@news')->where('id', '[1-9]\d*');
+// 新闻中心&分类新闻
+Route::get('/news/list', 'IndexController@newsCenter');
+Route::get('/news/list/{cat_id}', 'IndexController@newsCenter')->where('cat_id', '[1-9]\d*');
 // 后台路由临时存放于此
 
 Route::get('/manage', function() {

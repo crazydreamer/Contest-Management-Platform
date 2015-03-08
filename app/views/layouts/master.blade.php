@@ -27,7 +27,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="/">首页</a></li>
-                                <li><a href="#">最新公告</a></li>
+                                <li><a href="/news/list">最新公告</a></li>
                                 <li><a href="#">竞赛列表</a></li>
                                 <li><a href="#">在线报名</a></li>
                                 <li><a href="#">作品提交</a></li>
@@ -48,15 +48,15 @@
                 </nav>
             </div>
             @show
-
-            @section('main')
-            @show
-
+            <div class="main">
+                @section('main')
+                @show
+            </div>
             @section('footer')
             <div class="row-fluid text-center">
                 <div class="col-md-8 col-md-offset-2 footer">
                     <p>
-                        <a href="/" target="_blank">网站首页</a> |
+                        <a href="/">网站首页</a> |
                         <a href="#" target="_blank">联系我们</a> |
                         <a href="http://www.uestc.edu.cn" target="_blank">电子科技大学</a>
                     </p>

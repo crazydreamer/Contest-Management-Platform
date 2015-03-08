@@ -31,9 +31,20 @@ class IndexController extends BaseController {
                 ->first();
         $news = array();
         foreach ($data as $k => $v) {
-           $news[$k] = $v;
+            $news[$k] = $v;
         }
         return View::make('index.news', $news);
+    }
+
+    public function newsCenter($cat_id = NULL) {
+        $cats = NewsCategory::where('status', '=', 1)->get();
+        //  如果传入 cat_id 参数，则 where cat_id = id,否则选取全部分类，即 cat_id > 0
+        $newsList = News::where('status', '=', 1)->where('cat_id', ($cat_id === NULL) ? '>' : '=', ($cat_id === NULL) ? 0 : (int) $cat_id)
+                        ->orderBy('news_id', 'desc')->paginate(15);
+        return View::make('index.newsCenter', array(
+                    'category' => $cats,
+                    'list' => $newsList,
+        ));
     }
 
 }

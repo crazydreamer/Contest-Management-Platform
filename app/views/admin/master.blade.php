@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title'){{{ $title or '管理后台' }}}@stop
+
 @section('css')
 <link rel="stylesheet" href="/css/admin/common.css">
 @stop

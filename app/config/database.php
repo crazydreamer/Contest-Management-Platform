@@ -63,7 +63,7 @@ return array(
 			'prefix'    => '',
 		),
             
-            		'mysql' => array(
+            	'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => '127.0.0.1',
 			'database'  => 'platform_dev',

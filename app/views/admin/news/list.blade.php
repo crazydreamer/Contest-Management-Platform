@@ -58,12 +58,12 @@
             <?php echo $lists->links(); ?>
         </div>
         <div class="container" id="searchNews">
-            {{ Form::open(array('url' => 'http://dev.cc/manage/news/category', 'role' => 'form', 'class' => 'form-inline')); }}
+            {{ Form::open(array('url' => 'http://dev.cc/manage/news/search', 'role' => 'form', 'class' => 'form-inline')); }}
             <div class="form-group">
                 {{Form::label('news_title', '搜索新闻',  $attributes = array('class' => 'control-label'));}}
 
-                {{Form::text('title', $value = null, $attributes = array(
-                                 'id' => 'news_title',
+                {{Form::text('keyword', $value = null, $attributes = array(
+                                 'id' => 'search_input',
                                  'class' => 'form-control'));}}
             </div>
             {{Form::button('搜索', $attributes = array(

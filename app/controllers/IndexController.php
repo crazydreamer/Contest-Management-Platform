@@ -33,6 +33,7 @@ class IndexController extends BaseController {
         foreach ($data as $k => $v) {
             $news[$k] = $v;
         }
+        DB::table('news')->where('news_id', $id)->increment('clicks', 1);
         return View::make('index.news', $news);
     }
 

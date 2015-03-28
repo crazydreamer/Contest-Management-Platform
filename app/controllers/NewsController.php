@@ -104,7 +104,7 @@ class NewsController extends BaseController {
     }
 
     public function postSearch() {
-        // FIXME:此处未做关键字长度限制
+        // FIX ME:此处未做关键字长度限制
         $keyword = Input::get('keyword'); 
         return $this->getIndex($keyword);
     }

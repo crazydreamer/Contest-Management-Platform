@@ -22,6 +22,10 @@ class IndexController extends BaseController {
                     'newsList' => $newsList,
         ));
     }
+    
+    public function signup() {
+        echo "signup";
+    }
 
     public function news($id) {
         $id = (int) $id;

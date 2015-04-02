@@ -1,5 +1,9 @@
 @extends('admin.master')
 
+@section('title')
+新闻管理
+@stop
+
 @section('css')
 @parent
 <link rel="stylesheet" href="/css/admin/news.css">

@@ -42,6 +42,7 @@
         <hr />
         <div class="sideNav">
             @section('sidebar')
+            <p><a href="/manage/config/department">院系维护</a></p>
             @show
         </div>
         </div>

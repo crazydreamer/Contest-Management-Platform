@@ -57,3 +57,9 @@ input#submit{
     width:150px;
     margin:auto;
 }
+
+button#signup{
+    width:150px;
+    margin-left: auto;
+    margin-right: auto;
+}

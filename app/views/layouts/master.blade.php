@@ -44,14 +44,15 @@
                                 </form>
                             </div>
                         </div>
+                    </nav>
                 </div>
-                </nav>
             </div>
             @show
-            <div class="main">
+
+            <div class="main row-fluid">
                 @section('main')
                 @show
-            </div>
+            </div> 
             @section('footer')
             <div class="row-fluid text-center">
                 <div class="col-md-8 col-md-offset-2 footer">

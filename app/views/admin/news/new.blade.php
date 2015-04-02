@@ -1,5 +1,9 @@
 @extends('admin.news.master')
 
+@section('title')
+发布新闻
+@stop
+
 @section('javascript')
 <script src="/plugins/ckeditor/ckeditor.js"></script>
 @stop

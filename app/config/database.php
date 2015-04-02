@@ -63,11 +63,11 @@ return array(
 			'prefix'    => '',
 		),
             
-            	'mysql' => array(
+        'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '127.0.0.1',
+			'host'      => '106.185.40.8',
 			'database'  => 'platform_dev',
-			'username'  => 'root',
+			'username'  => 'platform_dev',
 			'password'  => 'DEV123',
 			'charset'   => 'utf8',  
 			'collation' => 'utf8_unicode_ci',

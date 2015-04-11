@@ -46,7 +46,7 @@
             <?php echo $cats->links(); ?>
         </div>
         <div class="container" id="addCategory">
-            {{ Form::open(array('url' => 'http://dev.cc/manage/news/category', 'role' => 'form', 'class' => 'form-inline')); }}
+            {{ Form::open(array('url' => '/manage/news/category', 'role' => 'form', 'class' => 'form-inline')); }}
             <div class="form-group">
                 {{Form::label('cat_name', '添加新闻分类',  $attributes = array('class' => 'control-label'));}}
 

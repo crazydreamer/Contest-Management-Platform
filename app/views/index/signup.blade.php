@@ -14,6 +14,18 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="inputName" class="col-sm-3 control-label">姓名</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputName" placeholder="请使用真实姓名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPhone" class="col-sm-3 control-label">联系电话</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputPhone" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
             <label for="inputPassword" class="col-sm-3 control-label">密码</label>
             <div class="col-sm-9">
                 <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
@@ -30,10 +42,9 @@
             <div class="col-sm-9 dropdown">
                 <select id="inputDepartment" class="form-control">
                     <option>请选择学院</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    @foreach($departmentList as $department)
+                    <option value="{{$department->department_id}}">{{$department->name}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

@@ -58,7 +58,7 @@
             <?php echo $lists->links(); ?>
         </div>
         <div class="container" id="searchNews">
-            {{ Form::open(array('url' => 'http://dev.cc/manage/news/search', 'role' => 'form', 'class' => 'form-inline')); }}
+            {{ Form::open(array('url' => '/manage/news/search', 'role' => 'form', 'class' => 'form-inline')); }}
             <div class="form-group">
                 {{Form::label('news_title', '搜索新闻',  $attributes = array('class' => 'control-label'));}}
 

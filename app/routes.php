@@ -19,9 +19,8 @@ Route::get('/news/{id}', 'IndexController@news')->where('id', '[1-9]\d*');
 Route::get('/news/list', 'IndexController@newsCenter');
 Route::get('/news/list/{cat_id}', 'IndexController@newsCenter')->where('cat_id', '[1-9]\d*');
 // 用户注册页面
-Route::get('/signup', function() {
-    return View::make('index.signup');
-});
+Route::get('/signup', 'IndexController@showSignup');
+
 Route::post('/signup', 'IndexController@signup');
 // 后台路由临时存放于此
 
@@ -32,4 +31,6 @@ Route::get('/manage', function() {
 });
 
 Route::controller('/manage/news', 'NewsController');
+Route::controller('/manage/contest', 'ContestController');
+Route::controller('/manage/account', 'AccountController');
 

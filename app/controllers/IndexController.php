@@ -23,8 +23,11 @@ class IndexController extends BaseController {
         ));
     }
     
-    public function signup() {
-        echo "signup";
+    public function showSignup() {
+        $departmentList = Department::where('is_active', 1)->where('level', 1)->get();
+        return View::make('index.signup')->with(array(
+            'departmentList' => $departmentList,
+        ));
     }
 
     public function news($id) {

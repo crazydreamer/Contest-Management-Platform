@@ -4,7 +4,7 @@
 
 @section('css')
 <link rel="stylesheet" href="/css/admin/common.css">
-@stop
+@append
 
 @section('banner')
             <div class="row-fluid banner">
@@ -14,8 +14,8 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="/manage">后台首页</a></li>
                                 <li><a href="/manage/news">新闻管理</a></li>
-                                <li><a href="#">竞赛管理</a></li>
-                                <li><a href="#">帐号管理</a></li>
+                                <li><a href="/manage/contest">竞赛管理</a></li>
+                                <li><a href="/manage/account">帐号管理</a></li>
                                 <li><a href="#">综合统计</a></li>
                                 <li><a href="#">其他信息</a></li>
                                 <li><a href="#"><strong>退出登录</strong></a></li>
@@ -35,7 +35,6 @@
 @stop
 
 @section('main')
-<div class="row-fluid" id="main">
     <div class="col-md-2">
         <div class="sidebar">
         <p id="sidebar_1">操作菜单</p>
@@ -53,5 +52,4 @@
         </div>
     </div>
     @show
-</div>
 @stop

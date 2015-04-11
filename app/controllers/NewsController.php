@@ -2,19 +2,23 @@
 
 class NewsController extends BaseController {
 
-    public function getIndex($keyword = NULL) {
+    public function getIndex() {
+        return $this->getList();
+    }
+
+    public function getList($keyword = NULL) {
         if ($keyword === NULL) {
             $lists = News::where('status', '!=', 2)->orderBy('news_id', 'desc')->paginate(10);
         } else {
             $lists = News::where('status', '!=', 2)->where('title', 'like', "%$keyword%")->orderBy('news_id', 'desc')->paginate(10);
-        }        
+        }
         foreach ($lists as $news) {
             $news->short_title = UtilsController::shortTitle($news->title, 55);
         }
         return View::make('admin.news.list')->with(
-                        array(
-                            'lists' => $lists,
-        ));
+            array(
+                'lists' => $lists,
+            ));
     }
 
     public function getNew() {
@@ -106,6 +110,6 @@ class NewsController extends BaseController {
     public function postSearch() {
         // FIX ME:此处未做关键字长度限制
         $keyword = Input::get('keyword'); 
-        return $this->getIndex($keyword);
+        return $this->getList($keyword);
     }
 }

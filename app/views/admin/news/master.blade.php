@@ -5,9 +5,9 @@
 @stop
 
 @section('css')
-@parent
 <link rel="stylesheet" href="/css/admin/news.css">
-@stop
+@append
+
 @section('sidebar')
 <p><a href="/manage/news">新闻列表</a></p>
 <p><a href="/manage/news/new">发布新闻</a></p>

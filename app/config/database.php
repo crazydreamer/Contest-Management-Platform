@@ -65,7 +65,7 @@ return array(
             
         'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '106.185.40.8',
+			'host'      => '127.0.0.1',
 			'database'  => 'platform_dev',
 			'username'  => 'platform_dev',
 			'password'  => 'DEV123',

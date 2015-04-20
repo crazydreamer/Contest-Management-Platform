@@ -24,4 +24,12 @@ class UtilsController extends BaseController {
         return substr($name, 0, $j);
     }
 
+    public static function redirect($msg, $dst, $countdown = 3) {
+        return View::make('utils.redirect')->with(array(
+            'countdown'     =>  $countdown,
+            'message'       =>  $msg,
+            'destination'   =>  $dst,
+        ));
+    }
+
 }

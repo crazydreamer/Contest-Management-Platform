@@ -19,6 +19,7 @@
     </script>
 </head>
 <body>
+<!--FIX ME : 可以修改为每一秒向提示信息后添加一个‘.’ -->
 {{$message}} <span id="countdown" hidden></span>
 </body>
 </html>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-新闻中心
+竞赛列表
 @stop
 
 @section('css')
@@ -13,19 +13,18 @@
 <div class="row-fluid">
     <div class="col-md-2">
         <div class="sidebar">
-            <p id="sidebar_1">新闻分类</p>
+            <p id="sidebar_1">竞赛列表</p>
             <hr />
             <div class="sideNav">
-                @foreach ($category as $cat)
-                <p><a href="/news/list/{{$cat->cat_id}}">{{$cat->name}}</a></p>
-                @endforeach
+                <p><a href="/contest/list">最新竞赛</a></p>
+                <p><a href="/contest/list">竞赛查询</a></p>
             </div>
         </div>
     </div>
     <div class="col-md-8 col-md-offset-1">
         <table class="table">
-            @foreach ($list as $news)
-            <tr><td>> <a href="/news/{{$news->news_id}}">{{$news->title}}</a></td><td>{{date('Y-m-d', strtotime($news->create_time))}}</td></tr>
+            @foreach ($list as $contest)
+            <tr><td>> {{$contest->name}}</td></tr>
             @endforeach
         </table>
         <?php echo $list->links(); ?>

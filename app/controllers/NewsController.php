@@ -39,7 +39,7 @@ class NewsController extends BaseController {
         );
         if ($data['cat_id'] > 0) {
             $news->create($data);
-            header("Location:/manage/news");
+            return UtilsController::redirect('发布成功，请进入新闻列表中进行审核', '/manage/news', 0);
         } else {
             return "请选择新闻对应分类！";
         }

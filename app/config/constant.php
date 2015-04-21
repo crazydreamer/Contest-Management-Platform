@@ -9,4 +9,35 @@
 
 return array(
 
+    // 首页新闻公告列表显示新闻数量
+    'INDEX_MODULE_NEWS_NUM' =>  7,
+
+    // 首页最新竞赛显示数量
+    'INDEX_MODULE_CONTEST_NUM'  =>  7,
+
+    // admin SALT
+    'SUPERUSER_SALT'    =>  "@ContestManagementSystemAdmin",
+
+    // 角色权限，若对数据库进行修改请更新此处
+    'roles' =>  array(
+        // 站点管理员
+        'siteAdmin'             =>  6,
+        // 预留角色
+        'currentlyUndefined'    =>  5,
+        // 竞赛管理员
+        'contestAdmin'          =>  4,
+        // 评委
+        'judge'                 =>  3,
+        // 指导教室
+        'teacher'               =>  2,
+        // 学生
+        'student'               =>  1,
+    ),
+
+    // 站点管理员账号列表
+    'superUsers'    =>  array(
+        'admin',
+        'hahaha',
+        'test',
+    ),
 );

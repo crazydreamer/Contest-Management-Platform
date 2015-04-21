@@ -14,6 +14,9 @@
                 </p>
             </div>
             <div class="moduleContent">
+                @foreach ($contestList as $contest)
+                    <p class="test">{{$contest->name}}</p>
+                @endforeach
             </div>
         </div>
     </div>
@@ -26,7 +29,7 @@
             </div>
             <div class="moduleContent">
                 @foreach ($newsList as $news)
-                <p><a id='newsCategory' href="#{{$news->cat_id}}">{{$news->name}}</a>&nbsp;|&nbsp;<a id="newsTitle" href="/news/{{$news->news_id}}" title='{{ $news->title }}'>{{$news->short_title}}</a></p>
+                <p><a id='newsCategory' href="/news/list/{{$news->cat_id}}">{{$news->name}}</a>&nbsp;|&nbsp;<a id="newsTitle" href="/news/{{$news->news_id}}" title='{{ $news->title }}'>{{$news->short_title}}</a></p>
                 @endforeach
             </div>
         </div>
@@ -39,35 +42,34 @@
                 </p>
             </div>
             <div class="moduleContent">
-                {{ Form::open(array('url' => 'foo/bar', 'name' => 'test', 'role' => 'form', 'class' => 'form-horizontal')) }}
+                {{ Form::open(array('url' => '/login', 'name' => 'test', 'role' => 'form', 'class' => 'form-horizontal')) }}
                 <div class="form-group">
-                    {{Form::label('username', '帐号', $attributes = array('class' => 'col-xs-3 control-label'));}}
+                    {{Form::label('username', '帐号', $attributes = array('class' => 'col-xs-3 control-label indexLogin'));}}
                     <div class="col-xs-8">
                         {{Form::text('username', $value = null, $attributes = array(
-                                'placeholder' => 'test',
                                 'id' => 'username',
-                                'class' => 'form-control'));}}
+                                'class' => 'form-control indexLogin',));}}
                     </div>
                 </div>
                 <div class="form-group">
-                    {{Form::label('password', '密码',  $attributes = array('class' => 'col-xs-3 control-label'));}}
+                    {{Form::label('password', '密码',  $attributes = array('class' => 'col-xs-3 control-label indexLogin'));}}
                     <div class="col-xs-8">
                         {{Form::password('password', $attributes = array(
                                  'id' => 'password',
-                                 'class' => 'form-control'));}}
+                                 'class' => 'form-control indexLogin'));}}
                     </div>
                 </div>
                 <!--此处添加验证码-->
                 <div class="form-group">
                     {{Form::submit('登录', $attributes = array(
                                  'id' => 'submit',
-                                 'class' => 'form-control' ));}}
+                                 'class' => 'form-control indexLogin' ));}}
                 </div>
                 <div class="form-group">
                     {{Form::button('注册', $attributes = array(
                                  'id' => 'signup',
                                  'onclick' => 'location=\'/signup\'',
-                                 'class' => 'form-control' ));}}
+                                 'class' => 'form-control indexLogin' ));}}
                 </div>
                 {{ Form::close() }}
             </div>

@@ -26,15 +26,3 @@ border-top:1px solid black;
 .main{
     min-height: 600px;
 }
-
-.sidebar{
-    text-align: center;
-    border:1px solid lightblue;
-    border-radius:6px;
-    -moz-border-radius:6px; /* Old Firefox */
-    background-color: white;
-}
-p#sidebar_1{
-    margin-top:10px;
-    margin-bottom: -10px;
-}

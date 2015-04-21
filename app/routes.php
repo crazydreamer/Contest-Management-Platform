@@ -18,11 +18,18 @@ Route::get('/news/{id}', 'IndexController@news')->where('id', '[1-9]\d*');
 // 新闻中心&分类新闻
 Route::get('/news/list', 'IndexController@newsCenter');
 Route::get('/news/list/{cat_id}', 'IndexController@newsCenter')->where('cat_id', '[1-9]\d*');
+// 竞赛列表
+Route::get('/contest/list', 'IndexController@contestCenter');
 // 用户注册页面
 Route::get('/signup', 'IndexController@showSignup');
 
 Route::post('/signup', 'IndexController@signup');
 // 后台路由临时存放于此
+Route::get('/login', function() {
+    return View::make('index.login');
+});
+Route::post('/login', 'IndexController@login');
+Route::get('/logout', 'IndexController@logout');
 
 Route::controller('/manage/config', 'AdminController');
 Route::get('/manage', function() {

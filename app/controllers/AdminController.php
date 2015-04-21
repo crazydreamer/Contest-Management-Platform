@@ -2,6 +2,10 @@
 
 class AdminController extends BaseController {
 
+    public function getIndex() {
+        return $this->getDepartment();
+    }
+
     public function getDepartment() {
         $departmentList = Department::where('level', 1)->where('is_active', 1)->paginate(15);
         return View::make('admin.config.department')->with('list', $departmentList);

@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+{{{$title or '新闻正文'}}}
+@stop
+
 @section('css')
 @parent
 <link rel="stylesheet" href="/css/news.css">

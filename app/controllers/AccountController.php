@@ -6,4 +6,16 @@ class AccountController extends BaseController {
         return View::make('admin.account.master');
     }
 
+    private function createAccount(array $data, $role) {
+        $user = new User();
+        switch ($role) {
+            case 1:
+
+                break;
+            default:
+                return false;
+        }
+        return $user->create($data);
+    }
+
 }

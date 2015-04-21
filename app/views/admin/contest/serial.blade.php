@@ -41,6 +41,7 @@
                     <p class="help-block">此处请输入系列竞赛的名称，不需要加入第X届，初赛、复赛等字眼</p>
                     <p class="help-block">例如：</p>
                     <p class="help-block">第八届<span class="red">全国大学生信息安全竞赛</span></p>
+                    <p class="help-block">第八届“XX杯”<span class="red">全国大学生信息安全竞赛</span>复赛</p>
                     <p class="help-block">第八届<span class="red">全国大学生信息安全竞赛</span>校内赛复赛</p>
                     <p class="help-block">全国<span class="red">全国大学生信息安全竞赛</span>校内赛选拔赛</p>
                     <p class="help-block">等，其系列赛事名称应填写为 <strong><span class="red">全国大学生信息安全竞赛</span></strong></p>

@@ -37,7 +37,7 @@ class ContestController extends BaseController {
             case 1:
                 $data['status'] = 1;
                 $Contest->create($data);
-                header("Location:/manage/contest/serial");
+                return UtilsController::redirect('创建成功！', '/manage/contest/serial', 0);
                 break;
             case 2:
                 $data['status']             =   -1; // 单项竞赛发布前是否需要审核待定。
@@ -45,11 +45,10 @@ class ContestController extends BaseController {
                 $data['start_time']         =  Input::get('start_time');
                 $data['end_time']           =  Input::get('end_time');
                 $Contest->create($data);
-                header("Location:/manage/contest/list");
+                return UtilsController::redirect('创建成功！', '/manage/contest/list', 0);
                 break;
             default:
-                echo "未知竞赛类型！";
-                exit();
+                return UtilsController::redirect('未知竞赛类型！', '/manage/contest/new', 0);
         }
     }
 

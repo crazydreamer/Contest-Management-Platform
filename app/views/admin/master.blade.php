@@ -16,9 +16,9 @@
                                 <li><a href="/manage/news">新闻管理</a></li>
                                 <li><a href="/manage/contest">竞赛管理</a></li>
                                 <li><a href="/manage/account">帐号管理</a></li>
-                                <li><a href="#">综合统计</a></li>
-                                <li><a href="#">其他信息</a></li>
-                                <li><a href="#"><strong>退出登录</strong></a></li>
+                                <li><a href="#/manage/statistics">综合统计</a></li>
+                                <li><a href="/manage/config">其他信息</a></li>
+                                <li><a href="/logout"><strong>退出登录</strong></a></li>
                             </ul>
                             <div class="nav navbar-nav navbar-right">
                                 <form class="navbar-form navbar-left" role="search">
@@ -29,8 +29,8 @@
                                 </form>
                             </div>
                         </div>
+                    </nav>
                 </div>
-                </nav>
             </div>
 @stop
 
@@ -41,7 +41,12 @@
         <hr />
         <div class="sideNav">
             @section('sidebar')
-            <p><a href="/manage/config/department">院系维护</a></p>
+                <p><a href="/manage/">后台首页</a></p>
+                <p><a href="/manage/news">新闻管理</a></p>
+                <p><a href="/manage/contest">竞赛管理</a></p>
+                <p><a href="/manage/account">账号管理</a></p>
+                <p><a href="/manage/#statistics">综合信息</a></p>
+                <p><a href="/manage/config">其他信息</a></p>
             @show
         </div>
         </div>
@@ -49,6 +54,8 @@
     @section('functionArea')
     <div class="col-md-8 col-md-offset-1">
         <div class="functionArea">
+            <p class="red strong">{{Session::get('realName', '你好')}}，欢迎登陆管理后台！</p>
+            <p>请在顶部导航栏和左侧菜单栏选择你需要进行的操作。</p>
         </div>
     </div>
     @show

@@ -28,7 +28,7 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="/">首页</a></li>
                                 <li><a href="/news/list">最新公告</a></li>
-                                <li><a href="#">竞赛列表</a></li>
+                                <li><a href="/contest/list">竞赛列表</a></li>
                                 <li><a href="#">在线报名</a></li>
                                 <li><a href="#">作品提交</a></li>
                                 <li><a href="#">获奖作品</a></li>

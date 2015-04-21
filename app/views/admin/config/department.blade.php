@@ -1,8 +1,7 @@
-@extends('admin.master')
+@extends('admin.config.master')
 
-@section('css')
-@parent
-<link rel="stylesheet" href="/css/admin/news.css">
+@section('title')
+    院系维护
 @stop
 
 @section('javascript')

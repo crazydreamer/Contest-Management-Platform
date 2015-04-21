@@ -47,6 +47,16 @@
             </div>
         </div>
         {{ Form::close(); }}
+        <div class="row attachment">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">附件上传</label>
+                    <input type="file" name="file" id="file">
+                    <p class="help-block">请在此处上传新闻附件</p>
+                </div>
+                <button type="submit" class="btn btn-default">上传</button>
+            </form>
+        </div>
     </div>
 </div>
 @stop

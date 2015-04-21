@@ -44,22 +44,42 @@ a#newsTitle{
     margin-top: 15px;
 }
 
-label.control-label{
-    margin-left: 15px;
-    margin-right: -10px;
+label.indexLogin{
+    margin-left: 10px;
+    margin-right: -15px;
 }
 
-input.form-control{
+input.indexLogin{
     width:120px;
 }
 
-input#submit{
+input#submit.indexLogin{
     width:150px;
     margin:auto;
 }
 
-button#signup{
+button.indexLogin{
     width:150px;
     margin-left: auto;
     margin-right: auto;
+}
+
+p.test{
+    padding-left: 7px;
+}
+
+.loginForm{
+    margin-top:50px;
+}
+
+.sidebar{
+    text-align: center;
+    border:1px solid lightblue;
+    border-radius:6px;
+    -moz-border-radius:6px; /* Old Firefox */
+    background-color: white;
+}
+p#sidebar_1{
+    margin-top:10px;
+    margin-bottom: -10px;
 }

@@ -13,7 +13,7 @@
 @section('functionArea')
 <div class="col-md-8 col-md-offset-1">
     <div class="functionArea">
-        <div id="newsList">
+        <div id="contestList">
             <table class="table table-hover text-center">
                 <thead>
                 <th>id</th>

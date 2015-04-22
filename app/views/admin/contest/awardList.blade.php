@@ -1,7 +1,7 @@
 @extends('admin.contest.master')
 
 @section('title')
-    全部竞赛
+    获奖名单
 @stop
 
 @section('javascript')
@@ -14,13 +14,15 @@
                 <thead>
                 <th>id</th>
                 <th>竞赛名称</th>
+                <th>状态</th>
                 <th>操作</th>
                 </thead>
                 @foreach ($lists as $list)
-                <tr class="{{$list->status ? '' : 'warning'}}">
+                <tr class="{{$list->awarded ? 'success' : ''}}">
                     <th>{{ $list->contest_id }}</th>
                     <td>{{ $list->name }}</td>
-                    <td>{{ $list->status ? '' :'<a onclick="sendAction(\'active\', ' . $list->news_id . ')">发布</a>' }} {{'<a href="/manage/news/edit?id=' . $list->news_id  . '">修改</a>' . ' ' . '<a onclick="sendAction(\'delete\', ' . $list->news_id . ')">删除</a>' }}</td>
+                    <td>{{ $list->awarded ? '已颁奖' : '未颁奖' }}</td>
+                    <td><a href="/manage/contest/award/{{ $list->contest_id }}">{{ $list->awarded ? '修改' : '发布' }}获奖名单</a></td>
                 </tr>
                 @endforeach
             </table>

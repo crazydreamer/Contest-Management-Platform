@@ -59,4 +59,56 @@ class ContestController extends BaseController {
         ));
     }
 
+    public function getWinners() {
+        $lists = Contest::where('level', 2)->paginate(15);
+        return View::make('admin.contest.awardList')->with(array(
+            'lists' => $lists,
+        ));
+    }
+
+    public function getAward($id) {
+        $contestId = intval($id);
+        if ($id <= 0) {
+            return UtilsController::redirect('竞赛不存在！', '/manage/contest/winners', 1);
+        }
+        // 检查竞赛状态
+        $check = Contest::where('contest_id', $contestId)->get(array('awarded'))->take(1)->toArray();
+        if ($check[0]['awarded']) {
+            // 已发布获奖名单，进入修改
+        } else {
+            // 发布新的获奖名单
+            $contest = Contest::where('contest_id', $contestId)->get(array('name'))->toArray();
+            $contestName = $contest[0]['name'];
+            return View::make('admin.contest.award')->with(array(
+                'contestId'     =>  $contestId,
+                'contestName'   =>  $contestName,
+            ));
+        }
+    }
+
+    public function postAward() {
+        $separator = "#SP#";
+        // FIX ME : 此处没有对输入进行校验
+        $input = Input::get();
+        $contest_id = (int)$input['contestId'];
+        $count = (int)$input['count'];
+        $winner = new Winner();
+        for($i = 1 ; $i <= $count ; $i++) {
+            $data = array();
+            $award = $input['award'.$i];
+            $list = ltrim(rtrim($input['list'.$i]));
+            $list = str_replace("\r\n", $separator, $list);
+            $data = array(
+                'contest_id'    =>  $contest_id,
+                'name'          =>  $award,
+                'list'          =>  $list,
+                'sp'            =>  $separator,
+                'user_id'       =>  Session::get('userId')
+            );
+            $winner->create($data);
+        }
+        $contest = Contest::where('contest_id', $contest_id)->update(array('awarded' => 1));
+        return UtilsController::redirect('发布成功！', '/manage/contest/winners', 0);
+    }
+
 }

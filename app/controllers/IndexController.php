@@ -29,12 +29,29 @@ class IndexController extends BaseController {
         return $contestList;
     }
 
+    private function getIndexWinnerList() {
+        $limit = (int)Config::get('constant.INDEX_MODULE_WINNERLIST_NUM');
+        $contestList = Contest::where('awarded', 1)->where('status', '<', 3)->take($limit)->orderBy('end_time', 'desc')->get(array('contest_id', 'name'))->toArray();
+        $buffer = "";
+        foreach ($contestList as $contest) {
+            $buffer .= $contest['name'] . "<br />";
+            $data = Winner::where('contest_id', $contest['contest_id'])->get(array('name', 'list', 'sp'))->toArray();
+            foreach ($data as $record) {
+                $buffer .= $record['name'] . "<br />";
+                $buffer .= str_replace($record['sp'], '<br />', $record['list']) . "<br />";
+            }
+        }
+        return $buffer;
+    }
+
     public function index() {
         $newsList = $this->getIndexNewsList();
         $contestList = $this->getIndexContestList();
+        $winnerList = $this->getIndexWinnerList();
         return View::make('index.master')->with(array(
             'newsList'      =>  $newsList,
             'contestList'   =>  $contestList,
+            'winnerList'    =>  $winnerList,
         ));
     }
 

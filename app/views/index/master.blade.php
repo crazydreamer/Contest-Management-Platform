@@ -93,6 +93,11 @@
                 获奖名单
             </p>
         </div>
+        <div class="moduleContent">
+            <marquee scrollAmount=2 direction=up>
+                {{ $winnerList }}
+            </marquee>
+        </div>
     </div>
 </div>
 @stop

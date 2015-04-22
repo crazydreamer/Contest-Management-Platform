@@ -15,6 +15,9 @@ return array(
     // 首页最新竞赛显示数量
     'INDEX_MODULE_CONTEST_NUM'  =>  7,
 
+    // 首页获奖名单现实竞赛数量
+    'INDEX_MODULE_WINNERLIST_NUM'  =>  3,
+
     // admin SALT
     'SUPERUSER_SALT'    =>  "@ContestManagementSystemAdmin",
 

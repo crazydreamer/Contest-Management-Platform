@@ -10,6 +10,7 @@
 
 @section('main')
 <div class="col-md-6 col-md-offset-3 loginForm">
+    <p id="loginTitle">用户登录</p>
     <form class="form-horizontal" method="POST" action="/login">
 
         <div class="form-group">

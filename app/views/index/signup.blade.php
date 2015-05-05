@@ -4,8 +4,13 @@
 用户注册
 @stop
 
+@section('css')
+    <link rel="stylesheet" href="/css/index.css">
+@stop
+
 @section('main')
 <div class="col-md-8 col-md-offset-2">
+    <p id="signupTitle">用户注册</p>
     <form class="form-horizontal" method="POST" action="/signup">
         <div class="form-group">
             <label for="inputStuID" class="col-sm-3 control-label">学号</label>

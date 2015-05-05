@@ -31,13 +31,33 @@ Route::get('/login', function() {
 Route::post('/login', 'IndexController@login');
 Route::get('/logout', 'IndexController@logout');
 
-Route::controller('/manage/config', 'AdminController');
-Route::get('/manage', function() {
-    // 此处需添加权限验证路由
-    return View::make('admin.master');
+/*****************后台路由*****************/
+
+// 后台权限验证路由
+Route::filter('admin', function()
+{
+    if (Session::has('userId') && Session::has('role')) {
+        if (Session::get('role') == Config::get('constant.roles.siteAdmin')) {
+            // 权限验证成功
+        } else {
+            return UtilsController::redirect('您当前用户组没有后台操作权限，请重新登陆', '/login', 1);
+        }
+    } else {
+        return UtilsController::redirect('您尚未登陆，请登录后进行操作', '/login', 1);
+    }
 });
 
-Route::controller('/manage/news', 'NewsController');
-Route::controller('/manage/contest', 'ContestController');
-Route::controller('/manage/account', 'AccountController');
+Route::group(array('before' => 'admin'), function()
+{
+    Route::get('/manage', function() {
+        return View::make('admin.master');
+    });
+
+    Route::controller('/manage/news', 'NewsController');
+    Route::controller('/manage/contest', 'ContestController');
+    Route::controller('/manage/account', 'AccountController');
+    Route::controller('/manage/config', 'AdminController');
+}
+);
+
 

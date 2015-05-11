@@ -177,6 +177,10 @@ class IndexController extends BaseController {
     }
 
     public function login() {
+        if (Session::has('userId')) {
+            return UtilsController::redirect('您已登陆，如需退出登陆，请点<a href="/logout">这里</a>，3秒后页面将跳回<a href="/">首页</a>！', '/', 3);
+        }
+
         $account = Input::get('username');
         $raw_pass = Input::get('password');
 
@@ -195,8 +199,18 @@ class IndexController extends BaseController {
                 return $this->adminLogin($account, $raw_pass);
             }
         }
-        // 下面进入其他用户登陆检测
-
+        $user = new User();
+        $r = $user->where('username', $account)->where('password', md5($raw_pass))->take(1)->get(array(
+            'user_id', 'role', 'realname'
+        ))->toArray();
+        if (!empty($r)) {
+            Session::put('userId', $r[0]['user_id']);
+            Session::put('role', $r[0]['role']);
+            Session::put('realName', $r[0]['realname']);
+            return UtilsController::redirect($r[0]['realname'] . ',欢迎登录！', '/', 0);
+        } else {
+            return UtilsController::redirect('用户名或密码错误！', '/login', 0);
+        }
     }
 
     private function adminLogin($account, $raw_pass) {

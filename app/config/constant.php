@@ -40,8 +40,6 @@ return array(
     // 站点管理员账号列表
     'superUsers'    =>  array(
         'admin',
-        'hahaha',
-        'test',
     ),
 
     // 学号规则

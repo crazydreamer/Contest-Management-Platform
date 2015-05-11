@@ -92,8 +92,9 @@ class IndexController extends BaseController {
         }
 
         // realname
-        preg_match_all("/[a-z0-9\s\/!@#$%^&\*()]+/", $input['realName'], $realNameOut, PREG_PATTERN_ORDER);
+        preg_match_all("/[a-z0-9 \/!@#$%^&\*()]+/", $input['realName'], $realNameOut, PREG_PATTERN_ORDER);
         if (!empty($realNameOut[0])) {
+            var_dump($realNameOut[0]);exit();
             return $this->signUpInvalid("姓名只能由中文字符组成，请检查");
         }
         if (strlen($input['realName']) > 60 ||
@@ -120,6 +121,7 @@ class IndexController extends BaseController {
         // valid check ends
 
         $data = array(
+            'username'      => $input['stuId'],
             'password'      => md5($input['password']),
             'realname'      => $input['realName'],
             'phone'         => $input['phone'],

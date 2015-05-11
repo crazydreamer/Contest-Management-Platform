@@ -8,32 +8,58 @@
     <link rel="stylesheet" href="/css/index.css">
 @stop
 
+@section('javascript')
+    <script type="text/javascript">
+        function signUp() {
+            var valid = true;
+            var pass = document.getElementById("inputPassword").value;
+            var checkpass = document.getElementById("inputPasswordConfirm").value;
+
+            if (pass != checkpass) {
+                alert("两次密码输入不一致！");
+                valid = false;
+            }
+
+            if (document.getElementById('inputDepartment').value == 0 && valid) {
+                alert("请选择学院！");
+                valid = false;
+            }
+
+            if (valid == true) {
+                document.getElementById("signupForm").submit();
+            }
+        }
+    </script>
+@stop
+
 @section('main')
 <div class="col-md-8 col-md-offset-2">
     <p id="signupTitle">用户注册</p>
-    <form class="form-horizontal" method="POST" action="/signup">
+    <form id="signupForm" class="form-horizontal" method="POST" action="/signup">
         <div class="form-group">
             <label for="inputStuID" class="col-sm-3 control-label">学号</label>
             <div class="col-sm-9">
-                <input type="number" class="form-control" id="inputStuID" placeholder="">
+                <input type="number" class="form-control" name="stuId" id="inputStuID" placeholder="">
             </div>
         </div>
         <div class="form-group">
             <label for="inputName" class="col-sm-3 control-label">姓名</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputName" placeholder="请使用真实姓名">
+                <input type="text" class="form-control" name="realName" id="inputName" placeholder="请使用中文的真实姓名">
+                <p class="help-block">If you do not have a Chinese name, please use 留学生 as your name.</p>
             </div>
         </div>
         <div class="form-group">
             <label for="inputPhone" class="col-sm-3 control-label">联系电话</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputPhone" placeholder="">
+                <input type="text" class="form-control" name="phone" id="inputPhone" placeholder="">
+                <p class="help-block"></p>
             </div>
         </div>
         <div class="form-group">
             <label for="inputPassword" class="col-sm-3 control-label">密码</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
+                <input type="password" class="form-control" name="password" id="inputPassword" placeholder="请输入密码">
             </div>
         </div>
         <div class="form-group">
@@ -45,8 +71,8 @@
         <div class="form-group">
             <label for="inputDepartment" class="col-sm-3 control-label">学院</label>
             <div class="col-sm-9 dropdown">
-                <select id="inputDepartment" class="form-control">
-                    <option>请选择学院</option>
+                <select name="departmentId" id="inputDepartment" class="form-control">
+                    <option value="0">请选择学院</option>
                     @foreach($departmentList as $department)
                     <option value="{{$department->department_id}}">{{$department->name}}</option>
                     @endforeach
@@ -55,7 +81,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="form-control">注册</button>
+                <button type="button" onclick="signUp()" class="form-control">注册</button>
             </div>
         </div>
     </form>

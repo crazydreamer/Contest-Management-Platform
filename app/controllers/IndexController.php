@@ -55,11 +55,89 @@ class IndexController extends BaseController {
         ));
     }
 
-    public function showSignup() {
+    public function showSignUp() {
         $departmentList = Department::where('is_active', 1)->where('level', 1)->get();
         return View::make('index.signup')->with(array(
             'departmentList' => $departmentList,
         ));
+    }
+
+    private function signUpInvalid($msg = "输入有误，请检查！") {
+        return UtilsController::redirect($msg, '/signup', 1);
+    }
+
+    public function signUp() {
+        // empty check
+        $input = Input::all();
+
+        foreach ($input as $i) {
+            if (strlen($i) == 0) {
+                return $this->signUpInvalid("请将注册信息填写完整，不能留空！");
+            }
+        }
+        if ($input['departmentId'] == "0") {
+            return $this->signUpInvalid("请将注册信息填写完整，不能留空！");
+        }
+
+        // valid check starts
+
+        // stu_id
+        preg_match_all("/\d+/", $input['stuId'], $stuIdOut, PREG_PATTERN_ORDER);
+        if (empty($stuIdOut[0])) {
+            return $this->signUpInvalid("学号只能由数字组成，请检查!");
+        }
+        if (strlen($input['stuId']) > Config::get('constant.stuIdRules.maxLength') ||
+            strlen($input['stuId']) < Config::get('constant.stuIdRules.minLength')) {
+            return $this->signUpInvalid("学号长度有误，请检查！");
+        }
+
+        // realname
+        preg_match_all("/[a-z0-9\s\/!@#$%^&\*()]+/", $input['realName'], $realNameOut, PREG_PATTERN_ORDER);
+        if (!empty($realNameOut[0])) {
+            return $this->signUpInvalid("姓名只能由中文字符组成，请检查");
+        }
+        if (strlen($input['realName']) > 60 ||
+            strlen($input['realName']) < 6) {
+            return $this->signUpInvalid("姓名长度不符，请使用真实姓名！");
+        }
+
+        // phone 此处只做了基本格式验证，只要是13/15/17/18开头11位数字均通过
+        preg_match_all("/1[3578]\d{9}/", $input['phone'], $phoneOut, PREG_PATTERN_ORDER);
+        if (empty($phoneOut[0])) {
+            return $this->signUpInvalid("手机号码无效，请使用中国大陆有效手机号码！");
+        }
+
+        // password
+        if (strlen($input['password']) < 6 || strlen($input['password']) > 16) {
+            return $this->signUpInvalid("密码长度应在6-16位之间！");
+        }
+
+        // department_id FIX ME : 此处未验证学院id是否真实有效
+        preg_match_all("/\d+/", $input['departmentId'], $departmentOut, PREG_PATTERN_ORDER);
+        if (empty($departmentOut[0])) {
+            return $this->signUpInvalid("学院信息非法!");
+        }
+        // valid check ends
+
+        $data = array(
+            'password'      => md5($input['password']),
+            'realname'      => $input['realName'],
+            'phone'         => $input['phone'],
+            'stu_id'        => $input['stuId'],
+            'department_id' => $input['departmentId'],
+            'role'          => 1, //目前暂时只提供学生注册
+            'last_login_ip' => UtilsController::getIp(),
+        );
+
+        $user = new User();
+        $result = $user->create($data)->toArray();
+
+        if ($result['user_id']) {
+            return UtilsController::redirect("注册成功,您现在可以登陆平台了！", '/login', 1);
+        } else {
+            return UtilsController::redirect("系统错误，请联系管理员！", '/signup', 1);
+        }
+
     }
 
     public function news($id) {

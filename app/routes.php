@@ -21,9 +21,9 @@ Route::get('/news/list/{cat_id}', 'IndexController@newsCenter')->where('cat_id',
 // 竞赛列表
 Route::get('/contest/list', 'IndexController@contestCenter');
 // 用户注册页面
-Route::get('/signup', 'IndexController@showSignup');
+Route::get('/signup', 'IndexController@showSignUp');
 
-Route::post('/signup', 'IndexController@signup');
+Route::post('/signup', 'IndexController@signUp');
 // 后台路由临时存放于此
 Route::get('/login', function() {
     return View::make('index.login');

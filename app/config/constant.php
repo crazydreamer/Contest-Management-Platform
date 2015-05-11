@@ -43,4 +43,10 @@ return array(
         'hahaha',
         'test',
     ),
+
+    // 学号规则
+    'stuIdRules'    => array(
+        'maxLength' =>  13,
+        'minLength' =>  10, //暂未发现更短的
+    ),
 );

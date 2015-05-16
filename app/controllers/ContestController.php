@@ -111,4 +111,12 @@ class ContestController extends BaseController {
         return UtilsController::redirect('发布成功！', '/manage/contest/winners', 0);
     }
 
+    public function join() {
+        $user = new AccountController();
+        if ($user->isLogin()) {
+
+        } else {
+            return UtilsController::redirect('请先登陆！', '/login', 0);
+        }
+    }
 }

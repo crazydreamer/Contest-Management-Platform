@@ -33,6 +33,7 @@
         <div class="newsContent">
             {{$content}}
         </div>
+        {{ isset($attach) ? "<p>附件：<a href='/down/news/$attach'>点击下载</a></p>" : '';  }}
     </div>
 </div>
 @overwrite

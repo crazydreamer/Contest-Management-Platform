@@ -20,18 +20,20 @@ Route::get('/news/list', 'IndexController@newsCenter');
 Route::get('/news/list/{cat_id}', 'IndexController@newsCenter')->where('cat_id', '[1-9]\d*');
 // 竞赛列表
 Route::get('/contest/list', 'IndexController@contestCenter');
-// 用户注册页面
+// 在线报名
+Route::get('/contest/join', 'ContestController@join');
+Route::post('/contest/join', 'ContestController@doJoin');
+// 用户注册
 Route::get('/signup', 'IndexController@showSignUp');
-
 Route::post('/signup', 'IndexController@signUp');
-// 后台路由临时存放于此
+// 用户登录&退出
 Route::get('/login', function() {
     return View::make('index.login');
 });
 Route::post('/login', 'IndexController@login');
 Route::get('/logout', 'IndexController@logout');
 
-/*****************后台路由*****************/
+/*****************    后台路由    *****************/
 
 // 后台权限验证路由
 Route::filter('admin', function()
@@ -60,4 +62,8 @@ Route::group(array('before' => 'admin'), function()
 }
 );
 
+/*****************    工具接口    *****************/
 
+Route::post('/upload', 'UtilsController@upload');
+
+Route::get('/down/{type}/{filename}', 'UtilsController@download');

@@ -152,6 +152,12 @@ class IndexController extends BaseController {
         foreach ($data as $k => $v) {
             $news[$k] = $v;
         }
+
+        // 附件处理
+        if ($news['attachment_id'] != NULL) {
+            $news['attach'] = UtilsController::queryAttachFilename($news['attachment_id']);
+        }
+
         DB::table('news')->where('news_id', $id)->increment('clicks', 1);
         return View::make('index.news', $news);
     }

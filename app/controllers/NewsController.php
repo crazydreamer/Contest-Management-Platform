@@ -33,8 +33,9 @@ class NewsController extends BaseController {
         $news = new News;
         $data = array(
             'title' => Input::get('newsTitle'),
-            'user_id' => 1, //FIX ME ; add real author when user model finished.
+            'user_id' => Session::get('userId'),
             'cat_id' => (int) Input::get('categoryId'),
+            'attachment_id' => Input::get('attachment') === ""? NULL : (int)Input::get('attachment'),
             'content' => Input::get('newsContent'),
         );
         if ($data['cat_id'] > 0) {
@@ -74,12 +75,13 @@ class NewsController extends BaseController {
     }
 
     public function postEdit() {
+        // FIX ME ：attachment edit no supported
         $news = News::find(Input::get('newsId'));
         $news->title = Input::get('newsTitle');
         $news->user_id = 1; //FIX ME ; add real author when user model finished.
         $news->cat_id = (int) Input::get('categoryId');
         $news->content = Input::get('newsContent');
-        $news->update_time = time();
+        $news->update_time = date('Y-m-d H:i:s', time());
         $news->save();
         return $this->getIndex();
     }

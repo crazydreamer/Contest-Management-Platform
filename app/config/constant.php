@@ -47,4 +47,11 @@ return array(
         'maxLength' =>  13,
         'minLength' =>  10, //暂未发现更短的
     ),
+
+    // 新闻附件存储路径
+    'newsAttachPath' => storage_path() . '/upload/attachment/',
+    // 学生上传作品存储路径
+    'studentWorkPath' => storage_path() . '/upload/stu_work/',
+    // 附件上传最大尺寸 此处应小于等于php.ini中upload_max_filesize的设置
+    'uploadMaxSize' => 1024*1024*20,
 );

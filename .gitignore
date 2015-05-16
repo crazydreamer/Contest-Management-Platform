@@ -8,5 +8,3 @@ composer.lock
 Thumbs.db
 /nbproject
 .idea/
-/app/storage/upload/attachment/*
-/app/storage/upload/stu_work/*

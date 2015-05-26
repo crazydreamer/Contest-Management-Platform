@@ -82,7 +82,7 @@
                 <input class='form-control' name="newsTitle" id="title" type='text' placeholder="新闻标题">
             </div>
         </div>
-        <div class="row">
+        <div class="row textareaNews">
             <textarea name="newsContent" id="newsEditor" rows="10" cols="80">
             </textarea>
             <script>

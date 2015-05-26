@@ -49,7 +49,7 @@
                 @foreach ($lists as $list)
                 <tr class="{{$list->status ? '' : 'warning'}}">
                     <th>{{ $list->news_id }}</th>
-                    <td>{{ '<a href="/news/' . $list->news_id . '" title=\'123\'>' . $list->short_title . '</a>' }}</td>
+                    <td>{{ '<a href="/news/' . $list->news_id . '" title=\'' . $list->title . '\'>' . $list->short_title . '</a>' }}</td>
                     <td>{{ $list->status ? '已发布' : '未发布' }}</td>
                     <td>{{ $list->status ? '' :'<a onclick="sendAction(\'active\', ' . $list->news_id . ')">发布</a>' }} {{'<a href="/manage/news/edit?id=' . $list->news_id  . '">修改</a>' . ' ' . '<a onclick="sendAction(\'delete\', ' . $list->news_id . ')">删除</a>' }}</td>
                 </tr>

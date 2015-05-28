@@ -34,12 +34,14 @@ class IndexController extends BaseController {
         $contestList = Contest::where('awarded', 1)->where('status', '<', 3)->take($limit)->orderBy('end_time', 'desc')->get(array('contest_id', 'name'))->toArray();
         $buffer = "";
         foreach ($contestList as $contest) {
-            $buffer .= $contest['name'] . "<br />";
+            // FIX ME : BAD PRACTICE , CHANGE TO CSS
+            $buffer .= "<strong>" . $contest['name'] . "</strong>" . "<br />";
             $data = Winner::where('contest_id', $contest['contest_id'])->get(array('name', 'list', 'sp'))->toArray();
             foreach ($data as $record) {
-                $buffer .= $record['name'] . "<br />";
+                $buffer .= "<strong>" . $record['name'] . "</strong>" . "<br />";
                 $buffer .= str_replace($record['sp'], '<br />', $record['list']) . "<br />";
             }
+            $buffer .="<br />";
         }
         return $buffer;
     }
@@ -235,7 +237,7 @@ class IndexController extends BaseController {
     public function logout() {
         if (Session::has('userId')) {
             Session::flush();
-            // 退出吼清空Session，跳转回网站首页
+            // 退出后清空Session，跳转回网站首页
             return UtilsController::redirect('您已成功退出登录！', '/', 0);
         } else {
             return UtilsController::redirect('您尚未登陆！', '/', 0);

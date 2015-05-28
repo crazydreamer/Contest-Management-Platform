@@ -21,6 +21,10 @@
                 language:'zh-CN',
                 format: 'yyyy-mm-dd hh:ii'
             });
+            $('#attend_deadline').datetimepicker({
+                language:'zh-CN',
+                format: 'yyyy-mm-dd hh:ii'
+            });
         })
 
         function showSerial() {
@@ -93,6 +97,12 @@
                 <div class="form-group">
                     <label class="control-label" for="end_time">请选择比赛结束时间</label>
                     <input type="text" value="" name="end_time" id="end_time" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="attend_deadline">在线报名截至时间</label>
+                    <input type="text" value="" name="attend_deadline" id="attend_deadline" readonly>
+                    <p class="help-block">提示信息</p>
                 </div>
 
                 <div class="form-group">

@@ -32,4 +32,29 @@ class AccountController extends BaseController {
         }
     }
 
+    public function checkPrivilege($operator = "=", $privilege) {
+        if ($this->isLogin()) {
+            $currentUser = (int)Session::get('role');
+            $privilege = (int)$privilege;
+            switch($operator) {
+                case '=' :
+                    return $currentUser === $privilege ? true : false ;
+                    break;
+                case '>' :
+                    return $currentUser > $privilege ? true : false ;
+                    break;
+                case '<' :
+                    return $currentUser < $privilege ? true : false ;
+                case '>=' :
+                    return $currentUser >= $privilege ? true : false ;
+                case '<=' :
+                    return $currentUser <= $privilege ? true : false ;
+                default:
+                    return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 }

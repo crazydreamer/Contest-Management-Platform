@@ -167,4 +167,9 @@ class UtilsController extends BaseController {
     public static function queryAttachFilename($id) {
         return head(Attachment::where('attachment_id', $id)->get(array('filename'))->toArray())['filename'];
     }
+
+    public static function currentDatetime() {
+        date_default_timezone_set("PRC");
+        return date('Y-m-d H:i:s', time());
+    }
 }

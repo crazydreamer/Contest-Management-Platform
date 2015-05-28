@@ -21,8 +21,8 @@ Route::get('/news/list/{cat_id}', 'IndexController@newsCenter')->where('cat_id',
 // 竞赛列表
 Route::get('/contest/list', 'IndexController@contestCenter');
 // 在线报名
-Route::get('/contest/join', 'ContestController@join');
-Route::post('/contest/join', 'ContestController@doJoin');
+Route::get('/contest/join', 'ContestController@listToJoin');
+Route::post('/contest/join', 'ContestController@join');
 // 用户注册
 Route::get('/signup', 'IndexController@showSignUp');
 Route::post('/signup', 'IndexController@signUp');

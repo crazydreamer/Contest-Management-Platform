@@ -15,7 +15,7 @@
             </div>
             <div class="moduleContent">
                 @foreach ($contestList as $contest)
-                    <p class="test">{{$contest->name}}</p>
+                    <p>{{$contest->name}}</p>
                 @endforeach
             </div>
         </div>
@@ -84,6 +84,42 @@
                 获奖作品展示
             </p>
         </div>
+        <div class="moduleContent">
+            <div class="">
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">移动互联网应用安全动态监控沙盒分析测评...</a>
+                </div>
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">基于安全二维码的快递隐私保护系统</a>
+                </div>
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">“隐形”U盘</a>
+                </div>
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">面向信息安全的快递物流管理系统</a>
+                </div>
+            </div>
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">基于步态识别的身份认证系统</a>
+                </div>
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">基于人脸识别的身份认证系统的研究与应用...</a>
+                </div>
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">面向Android智能移动平台的信息隐...</a>
+                </div>
+                <div class="col-md-3 worksBox">
+                    <img class="WorksImgSmall" src="/1.png"><br />
+                    <a href="/">基于Android的敏感数据传播检测系...</a>
+                </div>
+            </div>
     </div>
 </div>
 <div class="col-md-3">
@@ -94,9 +130,11 @@
             </p>
         </div>
         <div class="moduleContent">
-            <marquee scrollAmount=2 direction=up>
+            <div class="winnerList">
+            <marquee scrollAmount=2 direction=up height="100%" vspace="0px">
                 {{ $winnerList }}
             </marquee>
+            </div>
         </div>
     </div>
 </div>

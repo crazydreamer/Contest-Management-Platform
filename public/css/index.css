@@ -41,8 +41,12 @@ a#newsTitle{
 }
 
 .indexModuleLine2{
-    height: 350px;
+    height: 380px;
     margin-top: 15px;
+}
+
+.winnerList{
+    height: 330px; //要修改.indexModuleLine2 需要对此处进行相应修改以保证样式正确 height－50
 }
 
 label.indexLogin{
@@ -97,4 +101,21 @@ p#signupTitle{
     text-align: center;
     min-height: 60px;
     margin-left: 80px;
+}
+
+img.WorksImgSmall{
+    height: 80%;
+    width: 80%;
+    margin-top: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.worksBox{
+    text-align: center;
+    text-decoration: underline;
+}
+
+div#formAttendContest{
+    margin-top: 100px;
 }

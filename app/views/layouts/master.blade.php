@@ -2,7 +2,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
-        <title>@section('title'){{{ $title or '学科竞赛管理平台' }}}@show</title>
+        <title>@section('title'){{{ $title or '学科竞赛平台' }}}@show</title>
         <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         @section('javascript')

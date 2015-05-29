@@ -8,9 +8,10 @@
 @append
 
 @section('sidebar')
-    <p><a href="#">管理员账号</a></p>
-    <p><a href="#">学生账号</a></p>
-    <p><a href="#">教师账号</a></p>
+    <p><a href="/manage/account/add"><strong>创建账号</strong></a></p>
+    <p><a href="#">账号列表</a></p>
+    <p><a href="#">查找账号</a></p>
+    <p><a href="#">管理账号</a></p>
 @stop
 
 @section('functionArea')

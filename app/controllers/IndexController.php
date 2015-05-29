@@ -58,7 +58,7 @@ class IndexController extends BaseController {
     }
 
     public function showSignUp() {
-        $departmentList = Department::where('is_active', 1)->where('level', 1)->get();
+        $departmentList = Department::getList();
         return View::make('index.signup')->with(array(
             'departmentList' => $departmentList,
         ));

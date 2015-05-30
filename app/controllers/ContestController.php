@@ -45,6 +45,8 @@ class ContestController extends BaseController {
                 $data['start_time']         =  Input::get('start_time');
                 $data['end_time']           =  Input::get('end_time');
                 $data['attend_deadline']    =  Input::get('attend_deadline') === "" ? NULL : Input::get('attend_deadline');
+                $data['with_works']         =  (int)Input::get('withWorks') === 1 ? 1 : 0  ;
+                $data['works_deadline']         =  $data['with_works'] ? Input::get('works_deadline') : NULL;
                 $Contest->create($data);
                 return UtilsController::redirect('创建成功！', '/manage/contest/list', 0);
                 break;
@@ -141,36 +143,48 @@ class ContestController extends BaseController {
 
     public function join(){
         $user = new AccountController();
-        if ($user->isLogin()) {
-            if (Input::get('contestId') <= 0) {
-                return '请选择竞赛！';
-            }
-            if ($user->checkPrivilege('=', 1)) {
-                if (Contest::joinAvail(Input::get('contestId'))) {
-                    $joinAlready = ContestStu::where('user_id', Session::get('userId'))
-                        ->where('contest_id', Input::get('contestId'))->get()->toArray();
-                    if (empty($joinAlready)) {
-                        $data = array(
-                            'user_id' => Session::get('userId'),
-                            'contest_id' => Input::get('contestId'),
-                        );
-                        $r = ContestStu::create($data)->toArray();
-                        if ($r['id'] > 0) {
-                            return '报名成功！';
-                        } else {
-                            return '系统内部错误，请联系管理员！';
-                        }
+        if (Input::get('contestId') <= 0) {
+            return '请选择竞赛！';
+        }
+        if ($user->checkPrivilege('=', 1)) {
+            if (Contest::joinAvail(Input::get('contestId'))) {
+                $joinAlready = ContestStu::where('user_id', Session::get('userId'))
+                    ->where('contest_id', Input::get('contestId'))->get()->toArray();
+                if (empty($joinAlready)) {
+                    $data = array(
+                        'user_id' => Session::get('userId'),
+                        'contest_id' => Input::get('contestId'),
+                    );
+                    $r = ContestStu::create($data)->toArray();
+                    if ($r['id'] > 0) {
+                        return '报名成功！';
                     } else {
-                        return '您已报名过本竞赛,不能重复报名！';
+                        return '系统内部错误，请联系管理员！';
                     }
                 } else {
-                    return '该竞赛当前不可报名，请检查选择！';
+                    return '您已报名过本竞赛,不能重复报名！';
                 }
             } else {
-                return '竞赛只允许学生参赛，请使用学生账号登陆后重试';
+                return '该竞赛当前不可报名，请检查选择！';
             }
         } else {
-            return '请先登陆！';
+            return '竞赛只允许学生参赛，请使用学生账号登陆后重试';
+        }
+    }
+
+    public function contestToUpload() {
+        $user = new AccountController();
+        if ($user->checkPrivilege('=', 1)) {
+            $joinedList = ContestStu::joinedList(Session::get('userId'));
+            if (!empty($joinedList)) {
+                $joinedList = array_pluck($joinedList, 'contest_id');
+                $list = Contest::where('with_works', 1)->where('works_deadline', '>' , UtilsController::currentDatetime())->get()->toArray();
+                return View::make('index.contestToUpload')->with('list', $list);
+            } else {
+                return UtilsController::redirect('当前没有可提交作品的竞赛！！', '/', 1);
+            }
+        } else {
+            return UtilsController::redirect('您当前账号身份不是学生，请使用学生账号登录后重试！', '/', 1);
         }
     }
 }

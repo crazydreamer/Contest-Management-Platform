@@ -20,7 +20,7 @@
             $('#buttonUpload').click(function(){
                 var formData = new FormData($('#formAttachment')[0]);
                 $.ajax({
-                    url: '/upload',
+                    url: '/upload/1',
                     type: 'POST',
                     xhr: function() {  // Custom XMLHttpRequest
                         var myXhr = $.ajaxSettings.xhr();

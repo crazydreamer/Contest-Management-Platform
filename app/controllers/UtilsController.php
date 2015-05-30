@@ -64,6 +64,7 @@ class UtilsController extends BaseController {
         $res['err_no'] = $file['error'];
         $res['msg'] = 'upload failed';
 
+        $type = (int)$type;
         switch ($type) {
             case self::NEWS_ATTACHMENT:
                 $uploadDir = Config::get('constant.newsAttachPath');
@@ -77,7 +78,7 @@ class UtilsController extends BaseController {
                 break;
         }
 
-        // 此处应修改文件名为随机名称
+        // 此处应修改文件名为严谨的随机名称
         $uploadFile = $uploadDir . md5(time() . Session::get('userId')) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
 
         switch ($file['error']) {
@@ -95,7 +96,12 @@ class UtilsController extends BaseController {
                             $data['filename'] = basename($uploadFile);
                             $data['user_id'] = Session::get('userId');
                             $r = $attach->create($data)->toArray();
-                            $res['attach_id'] = $r['attachment_id'];
+                            // FIX ME : 此处返回id后再提交的方式可能重复编辑提交后遍历下载。改成文件名仍然不能解决，需要改变流程
+                            if ($type === self::NEWS_ATTACHMENT) {
+                                $res['attach_id'] = $r['attachment_id'];
+                            } elseif ($type === self::STU_WORK) {
+                                ContestStu::saveStuWorks($data['user_id'], (int)Input::get('contestId'), $r['attachment_id']);
+                            }
                         } else {
                             $res['err_no'] = -1;
                             $res['msg'] = 'Internal Error: error when saving file to target folder';

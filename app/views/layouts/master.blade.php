@@ -30,7 +30,7 @@
                                 <li><a href="/news/list">最新公告</a></li>
                                 <li><a href="/contest/list">竞赛列表</a></li>
                                 <li><a href="/contest/join">在线报名</a></li>
-                                <li><a href="#">作品提交</a></li>
+                                <li><a href="/works/upload">作品提交</a></li>
                                 <li><a href="#">获奖作品</a></li>
                                 <li><a href="#">优秀作品</a></li>
                                 <li><a href="#">综合查询</a></li>

@@ -13,26 +13,18 @@
     <script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript">
         $(function() {
-            $('#start_time').datetimepicker({
-                language:'zh-CN',
-                format: 'yyyy-mm-dd hh:ii'
-            });
-            $('#end_time').datetimepicker({
-                language:'zh-CN',
-                format: 'yyyy-mm-dd hh:ii'
-            });
-            $('#attend_deadline').datetimepicker({
+            $('.datetimepicker').datetimepicker({
                 language:'zh-CN',
                 format: 'yyyy-mm-dd hh:ii'
             });
         })
 
-        function showSerial() {
-            document.getElementById('serialOption').classList.remove('hidden');
+        function show(target) {
+            document.getElementById(target).classList.remove('hidden');
         }
 
-        function hideSerial() {
-            document.getElementById('serialOption').classList.add('hidden');
+        function hide(target) {
+            document.getElementById(target).classList.add('hidden');
         }
 
     </script>
@@ -50,10 +42,10 @@
                     <label class="control-label">竞赛分类</label>
                     <div class="controls">
                         <label class="radio-inline">
-                            <input type="radio" id="inlineRadio1" name="cat" onclick="showSerial()"> 系列竞赛
+                            <input type="radio" id="inlineRadio1" name="cat" onclick="show('serialOption')"> 系列竞赛
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineRadio2" name="cat" onclick="hideSerial()" checked> 单次竞赛
+                            <input type="radio" id="inlineRadio2" name="cat" onclick="hide('serialOption')" checked> 单次竞赛
                         </label>
                     </div>
                     <input class="hidden form-control" name="level" value="2" readonly>
@@ -90,19 +82,37 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="start_time">请选择比赛开始时间</label>
-                    <input type="text" value="" name="start_time" id="start_time" readonly>
+                    <label class="control-label" for="start_time">选择比赛开始时间</label>
+                    <input class="datetimepicker" type="text" value="" name="start_time" id="start_time" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="end_time">请选择比赛结束时间</label>
-                    <input type="text" value="" name="end_time" id="end_time" readonly>
+                    <label class="control-label" for="end_time">选择比赛结束时间</label>
+                    <input class="datetimepicker" type="text" value="" name="end_time" id="end_time" readonly>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="attend_deadline">在线报名截至时间</label>
-                    <input type="text" value="" name="attend_deadline" id="attend_deadline" readonly>
-                    <p class="help-block">提示信息</p>
+                    <input class="datetimepicker" type="text" value="" name="attend_deadline" id="attend_deadline" readonly>
+                    <p class="help-block">如果比赛不需要支持在线报名，请将报名截止时间设置为与开始时间相同。</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">是否需要在线提交作品</label>
+                    <div class="controls">
+                        <label class="radio-inline">
+                            <input type="radio" name="withWorks" value="1" onclick="show('worksOption')">需要
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="withWorks" value="0" onclick="hide('worksOption')">不需要
+                        </label>
+                    </div>
+                    <p class="help-block">需要在线提交作品的比赛将会要求用户将参赛作品在线上传，如果不需要请勾选“不需要”。</p>
+                </div>
+
+                <div class="form-group hidden" id="worksOption">
+                    <label class="control-label" for="works_deadline">在线作品提交截止时间</label>
+                    <input class="datetimepicker" type="text" value="" name="works_deadline" id="works_deadline" readonly>
                 </div>
 
                 <div class="form-group">

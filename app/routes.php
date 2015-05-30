@@ -11,6 +11,15 @@
   |
  */
 
+// 登录验证
+Route::filter('checkLogin', function()
+{
+    $user = new AccountController();
+    if (!$user->isLogin()) {
+        return UtilsController::redirect('您尚未登陆，请登录后进行操作', '/login', 1);
+    }
+});
+
 // 首页
 Route::get('/', 'IndexController@index');
 // 新闻正文
@@ -20,9 +29,17 @@ Route::get('/news/list', 'IndexController@newsCenter');
 Route::get('/news/list/{cat_id}', 'IndexController@newsCenter')->where('cat_id', '[1-9]\d*');
 // 竞赛列表
 Route::get('/contest/list', 'IndexController@contestCenter');
-// 在线报名
-Route::get('/contest/join', 'ContestController@listToJoin');
-Route::post('/contest/join', 'ContestController@join');
+
+Route::group(array('before' => 'checkLogin'), function()
+{
+    // 在线报名
+    Route::get('/contest/join', 'ContestController@listToJoin');
+    Route::post('/contest/join', 'ContestController@join');
+    // 作品提交
+    Route::get('/works/upload', 'ContestController@contestToUpload');
+    Route::post('/works/upload', 'ContestController@uploadWorks');
+});
+
 // 用户注册
 Route::get('/signup', 'IndexController@showSignUp');
 Route::post('/signup', 'IndexController@signUp');
@@ -64,6 +81,6 @@ Route::group(array('before' => 'admin'), function()
 
 /*****************    工具接口    *****************/
 
-Route::post('/upload', 'UtilsController@upload');
+Route::post('/upload/{type}', 'UtilsController@upload')->where('id', '[0-1]');
 
 Route::get('/down/{type}/{filename}', 'UtilsController@download');

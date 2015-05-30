@@ -12,6 +12,7 @@
     <p><a href="/manage/contest/serial">系列赛事</a></p>
     <p><a href="/manage/contest/new">创建竞赛</a></p>
     <p><a href="/manage/contest/attendee">报名统计</a></p>
+    <p><a href="/manage/contest/works">作品查看</a></p>
     <p><a href="/manage/contest/winners">获奖名单</a></p>
 @stop
 

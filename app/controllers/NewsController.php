@@ -23,9 +23,9 @@ class NewsController extends BaseController {
 
     public function getNew() {
         $cats = NewsCategory::where('status', '=', 1)->get();
-        return View::make('admin.news.new')->with(
-                        array(
-                            'cats' => $cats,
+        return View::make('admin.news.new')->with(array(
+            'cats' => $cats,
+            'maxNewsAttachSize' => Config::get('constant.uploadMaxSize'),
         ));
     }
 

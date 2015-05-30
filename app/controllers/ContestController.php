@@ -179,7 +179,10 @@ class ContestController extends BaseController {
             if (!empty($joinedList)) {
                 $joinedList = array_pluck($joinedList, 'contest_id');
                 $list = Contest::where('with_works', 1)->where('works_deadline', '>' , UtilsController::currentDatetime())->get()->toArray();
-                return View::make('index.contestToUpload')->with('list', $list);
+                return View::make('index.contestToUpload')->with(array(
+                    'list' => $list,
+                    'maxNewsAttachSize' => Config::get('constant.uploadMaxSize'),
+                    ));
             } else {
                 return UtilsController::redirect('当前没有可提交作品的竞赛！！', '/', 1);
             }

@@ -50,9 +50,11 @@ Web Server使用的是nginx，不过影响不太大，apache也可以。如果�
 
 ###数据库
 
-MySQL 106.185.40.8:3306 phpMyAdmin http://db.bydell.com
+MySQL 106.185.40.8:3306 phpMyAdm1n http://db.bydell.com
 
-user:platform_dev password:DEV123
+us[anti-search]er:platform_dev
+
+pas[anti-search]sw0rd:DEV123
 
 database:platform_dev
 

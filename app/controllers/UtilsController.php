@@ -167,6 +167,8 @@ class UtilsController extends BaseController {
             flush();
             readfile($file);
             exit;
+        } else {
+            return UtilsController::redirect('文件未找到！', '/', 0);
         }
     }
 

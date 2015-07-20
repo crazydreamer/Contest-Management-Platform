@@ -87,37 +87,37 @@
         <div class="moduleContent">
             <div class="">
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">移动互联网应用安全动态监控沙盒分析测评...</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/0e55cfefe28896255b3a64958daf81b3.zip">移动互联网应用安全动态监控沙盒分析测评...</a>
                 </div>
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">基于安全二维码的快递隐私保护系统</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/b273d24ba75beacc6cabede1320c3feb.zip">基于安全二维码的快递隐私保护系统</a>
                 </div>
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">“隐形”U盘</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/b273d24ba75beacc6cabede1320c3feb.zip">“隐形”U盘</a>
                 </div>
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">面向信息安全的快递物流管理系统</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/b273d24ba75beacc6cabede1320c3feb.zip">面向信息安全的快递物流管理系统</a>
                 </div>
             </div>
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">基于步态识别的身份认证系统</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/b273d24ba75beacc6cabede1320c3feb.zip">基于步态识别的身份认证系统</a>
                 </div>
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">基于人脸识别的身份认证系统的研究与应用...</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/b273d24ba75beacc6cabede1320c3feb.zip">基于人脸识别的身份认证系统的研究与应用...</a>
                 </div>
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">面向Android智能移动平台的信息隐...</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/b273d24ba75beacc6cabede1320c3feb.zip">面向Android智能移动平台的信息隐...</a>
                 </div>
                 <div class="col-md-3 worksBox">
-                    <img class="WorksImgSmall" src="/1.png"><br />
-                    <a href="/">基于Android的敏感数据传播检测系...</a>
+                    <img class="WorksImgSmall" src="/img/index_down_icon.png"><br />
+                    <a href="/down/stu_work/b273d24ba75beacc6cabede1320c3feb.zip">基于Android的敏感数据传播检测系...</a>
                 </div>
             </div>
     </div>

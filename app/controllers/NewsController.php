@@ -30,20 +30,27 @@ class NewsController extends BaseController {
     }
 
     public function postNew() {
-        $news = new News;
-        $data = array(
-            'title' => Input::get('newsTitle'),
-            'user_id' => Session::get('userId'),
-            'cat_id' => (int) Input::get('categoryId'),
-            'attachment_id' => Input::get('attachment') === ""? NULL : (int)Input::get('attachment'),
-            'content' => Input::get('newsContent'),
-        );
-        if ($data['cat_id'] > 0) {
-            $news->create($data);
-            return UtilsController::redirect('发布成功，请进入新闻列表中进行审核', '/manage/news', 0);
+
+        $check = new AccountController();
+        if ($check->checkPrivilege('>=', Config::get('constant.roles.contestAdmin'))){
+            $news = new News;
+            $data = array(
+                'title' => Input::get('newsTitle'),
+                'user_id' => Session::get('userId'),
+                'cat_id' => (int) Input::get('categoryId'),
+                'attachment_id' => Input::get('attachment') === ""? NULL : (int)Input::get('attachment'),
+                'content' => Input::get('newsContent'),
+            );
+            if ($data['cat_id'] > 0) {
+                $news->create($data);
+                return UtilsController::redirect('发布成功，请进入新闻列表中进行审核', '/manage/news', 0);
+            } else {
+                return "请选择新闻对应分类！";
+            }
         } else {
-            return "请选择新闻对应分类！";
+            return UtilsController::redirect('没有权限！', '/', 0);
         }
+
     }
 
     public function deleteIndex() {

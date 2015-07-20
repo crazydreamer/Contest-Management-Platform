@@ -1,25 +1,5 @@
 <?php
 
-/*
-  |--------------------------------------------------------------------------
-  | Application Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register all of the routes for an application.
-  | It's a breeze. Simply tell Laravel the URIs it should respond to
-  | and give it the Closure to execute when that URI is requested.
-  |
- */
-
-// 登录验证
-Route::filter('checkLogin', function()
-{
-    $user = new AccountController();
-    if (!$user->isLogin()) {
-        return UtilsController::redirect('您尚未登陆，请登录后进行操作', '/login', 1);
-    }
-});
-
 // 首页
 Route::get('/', 'IndexController@index');
 // 新闻正文
@@ -52,19 +32,6 @@ Route::get('/logout', 'IndexController@logout');
 
 /*****************    后台路由    *****************/
 
-// 后台权限验证路由
-Route::filter('admin', function()
-{
-    if (Session::has('userId') && Session::has('role')) {
-        if (Session::get('role') == Config::get('constant.roles.siteAdmin')) {
-            // 权限验证成功
-        } else {
-            return UtilsController::redirect('您当前用户组没有后台操作权限，请重新登陆', '/login', 1);
-        }
-    } else {
-        return UtilsController::redirect('您尚未登陆，请登录后进行操作', '/login', 1);
-    }
-});
 
 Route::group(array('before' => 'admin'), function()
 {
